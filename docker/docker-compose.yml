@@ -1,0 +1,18 @@
+version: '3'
+services:
+  deluge:
+    container_name: cdeluge
+    build: /media/discworld/git/docker/deluge/docker
+    ports: 
+      - "58946:58946"
+      - "58946:58946/udp"
+      - "58846:58846"
+    expose:
+      - "58846"
+    volumes:
+      - /media/discworld/git/docker/deluge/config/:/config
+      - /media/discworld/samba/torrents/:/torrents
+    restart: always
+networks:
+    default:
+        driver: bridge

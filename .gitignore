@@ -1,0 +1,4 @@
+# ignore all in config except...
+config/*
+!config/core.conf
+
