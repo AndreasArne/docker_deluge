@@ -8,4 +8,7 @@ rm -f /config/deluged.pid
 /bin/bash -c "source root/.profile"
 
 # Run as not daemon because "docker run.." shutsdown otherwise
-deluged -d -c /config -L warning -l /config/deluged.log
+deluged -c /config -L warning -l /config/deluged.log
+
+# Start webui
+deluge-web

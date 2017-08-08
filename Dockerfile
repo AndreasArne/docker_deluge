@@ -8,7 +8,8 @@ RUN apt-get update -q && \
     apt-get install -qy software-properties-common && \
     add-apt-repository ppa:deluge-team/ppa && \
     apt-get update -q && \
-    apt-get install -qy deluged deluge-console
+    apt-get install -qy deluged deluge-console deluge-web
+
 
 #RUN apt-get install -qy nano
 
@@ -20,7 +21,8 @@ ADD start.sh /start.sh
 
 # daemon port
 EXPOSE 58846
-
+#webui port
+EXPOSE 8112
 # incoming torrents
 EXPOSE 58946
 EXPOSE 58946/udp
