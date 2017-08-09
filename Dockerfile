@@ -10,6 +10,12 @@ RUN apt-get update -q && \
     apt-get update -q && \
     apt-get install -qy deluged deluge-console deluge-web
 
+# allow multiverse and install unrar
+RUN	echo "deb http://archive.ubuntu.com/ubuntu/ trusty-security multiverse" >> /etc/apt/sources.list && \
+#	echo "deb http://archive.ubuntu.com/ubuntu/ trusty-security-updates multiverse" >> /etc/apt/sources.list && \
+	apt-get -qy update && \
+	apt-get -qy install unrar unzip
+# kanske även behöver zip och par2?
 
 #RUN apt-get install -qy nano
 
