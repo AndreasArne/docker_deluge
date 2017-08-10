@@ -34,7 +34,14 @@ EXPOSE 58946
 EXPOSE 58946/udp
 
 # change UMask
-RUN echo "umask 007" >> /root/.profile
+#RUN echo "umask 007" >> /root/.profile
+
+# run with init.d for umask
+RUN echo -e '#!/bin/sh\nexit 0' > /usr/sbin/policy-rc.d
+ADD deluge-daemon /etc/init.d/
+ADD deluge-daemon_user /etc/default/
+RUN chmod 755 /etc/init.d/deluge-daemon
+RUN update-rc.d deluge-daemon defaults
 
 # runs start script when starting
 CMD ["/start.sh"]
