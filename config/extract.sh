@@ -1,11 +1,12 @@
 #!/bin/bash
 formats=(zip rar)
 commands=([zip]="unzip -u" [rar]="unrar -o- e")
-extraction_subdir='extracted'
 
 torrentid=$1
 torrentname=$2
 torrentpath=$3
+extraction_subdir=$2
+
 
 log()
 {
@@ -28,4 +29,5 @@ for format in "${formats[@]}"; do
         ${commands[$format]} "$file"
     done < <(find "$torrentpath/$torrentname" -iname "*.${format}" )
 done
-chmod -R 777 "$torrentpath/$torrentname/extracted"
+chmod -R 777 "$torrentpath/$torrentname/$torrentname"
+log "done extracting"
